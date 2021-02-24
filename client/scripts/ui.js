@@ -263,7 +263,7 @@ class ReceiveDialog extends Dialog {
         $a.href = url;
         $a.download = file.name;
 
-        if(this._autoDownload()){
+        if (this._autoDownload()) {
             $a.click()
             return
         }
@@ -298,10 +298,10 @@ class ReceiveDialog extends Dialog {
     }
 
 
-    _autoDownload(){
+    _autoDownload() {
         var autoDownload = localStorage.getItem('autoDownload');
         if (autoDownload === null) {
-	return !this.$el.querySelector('#autoDownload').checked;
+            return !this.$el.querySelector('#autoDownload').checked;
         }
         return autoDownload;
     }
@@ -512,7 +512,7 @@ class WebShareTargetUI {
         let shareTargetText = title ? title : '';
         shareTargetText += text ? shareTargetText ? ' ' + text : text : '';
 
-        if(url) shareTargetText = url; // We share only the Link - no text. Because link-only text becomes clickable.
+        if (url) shareTargetText = url; // We share only the Link - no text. Because link-only text becomes clickable.
 
         if (!shareTargetText) return;
         window.shareTargetText = shareTargetText;
