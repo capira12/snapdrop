@@ -242,6 +242,7 @@ class ReceiveDialog extends Dialog {
         this._busy = true;
         const file = this._filesQueue.shift();
         this._displayFile(file);
+        this._saveAutoDownload();
     }
 
     _dequeueFile() {
@@ -298,7 +299,17 @@ class ReceiveDialog extends Dialog {
 
 
     _autoDownload(){
-        return !this.$el.querySelector('#autoDownload').checked
+        var autoDownload = localStorage.getItem('autoDownload');
+        if (autoDownload === null) {
+	return !this.$el.querySelector('#autoDownload').checked;
+        }
+        return autoDownload;
+    }
+
+    _storeAutoDownload() {
+        if (localStorage.hasOwnProperty('autoDownload')) return;
+        var autoDownload = this._autoDownload();
+        localStorage.setItem('autoDownload', autoDownload);
     }
 }
 
