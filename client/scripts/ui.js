@@ -242,7 +242,7 @@ class ReceiveDialog extends Dialog {
         this._busy = true;
         const file = this._filesQueue.shift();
         this._displayFile(file);
-        this._saveAutoDownload();
+        this._storeAutoDownload();
     }
 
     _dequeueFile() {
